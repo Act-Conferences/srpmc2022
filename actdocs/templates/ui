@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="[% global.request.language %]" xml:lang="[% global.request.language %]">
+
+<head>
+<!-- Document Metadata -->
+<meta http-equiv="Content-Language" content="[% global.request.language %]" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<!-- OpenId -->
+[% IF openid %]
+<link rel="openid.server" href="[% global.request.base_url %][% make_uri('openid') %]" />
+[% END %]
+<!-- Atom news feed -->
+<link rel="alternate" type="application/atom+xml" title="[% global.conference.name %]"
+      href="[% global.request.base_url %][% make_uri_info( 'atom', global.request.language ) %].xml" />
+[%- IF title -%]<title>[% title  %]</title>[%- END -%]
+
+<!-- CSS Stylesheets -->
+<noscript>
+  <link rel="stylesheet" href="[% make_uri_info('css/5grid', 'core.css') %]" />
+  <link rel="stylesheet" href="[% make_uri_info('css/5grid', 'core-desktop.css') %]" />
+  <link rel="stylesheet" href="[% make_uri_info('css/5grid', 'core-1200px.css') %]" />
+  <link rel="stylesheet" href="[% make_uri_info('css/5grid', 'core-noscript.css') %]" />
+  <link rel="stylesheet" href="[% make_uri_info('css', 'style.css') %]" />
+  <link rel="stylesheet" href="[% make_uri_info('css', 'style-desktop.css') %]" />
+
+</noscript>
+
+<link rel="stylesheet" type="text/css" href="/css/act-base.css" />
+<link rel="stylesheet" type="text/css" href="/css/schedule.css" />
+
+<!-- JavaScript sugar -->
+<script src="[% make_uri_info('css/5grid', 'jquery.js') %]"></script>
+<script type="text/javascript" src="/js/act.js"></script>
+<script src="[% make_uri_info('css/5grid', 'init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI.titleBarHeight=55&amp;mobileUI.openerWidth=75&amp;mobileUI.openerText=&lt;') %]"></script>
+
+<!-- <script type="text/javascript" src="/js/jquery.js"></script> -->
+<script type="text/javascript" src="/js/act.js"></script>
+
+<script type="text/javascript"> <!--
+function UnCryptMailto( s )
+{
+    var n = 0;
+    var r = "";
+    for( var i = 0; i < s.length; i++)
+    {
+        n = s.charCodeAt( i );
+        if( n >= 8364 )
+        {
+            n = 128;
+        }
+        r += String.fromCharCode( n - 1 );
+    }
+    return r;
+}
+
+function linkTo_UnCryptMailto( s )
+{
+    location.href=UnCryptMailto( s );
+}
+// --> </script>
+
+
+<!-- Favorite icon -->
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body class="subpage">
+
+<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="5grid-layout">
+					<div class="row">
+						<div class="12u">
+							<h1><a href="[% make_uri('index.html') %]" class="mobileUI-site-name"><img src="[% make_uri_info('images', 'SwissPerlLogoBW.svg') %]" width="90px" alt="Logo" /> Swiss Raku and Perl Miniconf 2022</a></h1>
+							<social id="social">
+								<a target="_blank" href="http://www.facebook.com/swissrakuperlminicon"><img src="[% make_uri_info('images', 'facebook.png') %]" alt="Facebook" /></a>
+								<!--<a target="_blank" href="https://www.xing.com/events/swiss-perl-workshop-2017-1822847"><img src="[% make_uri_info('images', 'xing.png') %]" alt="Xing" /></a>-->
+								<a target="_blank" href="http://www.meetup.com/r/inbound/0/0/shareimg/http://www.meetup.com/Swiss-Perl-Community-Meetup/?a=shareimg"><img src="[% make_uri_info('images', 'meetup.png') %]" alt="Meetup" /></a>
+								<a target="_blank" href="https://www.instagram.com/perl_events/"><img src="[% make_uri_info('images', 'instagramm.png') %]" alt="Instagramm" /></a>
+							</social>
+						</div>
+					</div>
+				</header>
+			</div>
+
+		<!-- Content -->
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="5grid-layout">
+						<div class="row">
+							<div class="2u">
+								<!-- Left Sidebar -->
+									<section>
+                                                                                <div class="menu-section"><a href="[% make_uri('index.html') %]">Conference</a></div>
+										<div class="menu-item"><a href="[% make_uri('venue.html') %]">Venue</a></div>
+										<div class="menu-item"><a href="[% make_uri('registration.html') %]">Registration</a></div>
+										<div class="menu-item"><a href="[% make_uri('cfp.html') %]">Call for papers</a></div>
+										<!--<div class="menu-item"><a href="[% make_uri('gibb_getting_to.html') %]">Getting there</a></div>-->
+										<!--<div class="menu-item"><a href="[% make_uri('gibb_hotels.html') %]">Accommodation</a></div>-->
+										<!--<div class="menu-item"><a href="[% make_uri('gibb_things_todo.html') %]">Things to do</a></div>-->
+										<div class="menu-item"><a href="[% make_uri('sponsors.html') %]">Our Sponsors</a></div>
+										<div class="menu-item"><a href="[% make_uri('sponsoring.html') %]">Sponsoring</a></div>
+										<div class="menu-item"><a href="[% make_uri('organisers.html') %]">Organisers</a></div>
+										<div class="menu-item"><a href="[% make_uri('code_of_conduct.html') %]">Code of Conduct</a></div>
+										[% PROCESS menu %]
+									</section>
+							</div>
+							<div class="7u mobileUI-main-content">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2>[% title  %]</h2>
+										</header>
+										[% content %]
+									</section>
+
+							</div>
+							<div class="3u">
+
+								<!-- Right Sidebar -->
+									<section>
+										<header>
+											<h2>Sponsors</h2>
+										</header>
+										<ul class="link-list">
+											<!--<li><a target="_blank" href="http://www.oetiker.ch/"><img src="[% make_uri_info('images', 'op-logo-200.png') %]" alt="Oetiker + Partner AG" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.humanstate.com/"><img src="[% make_uri_info('images', 'humanstate.png') %]" alt="Humanstate" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.infomaniak.com"><img src="[% make_uri_info('images', 'logo-infomaniak.svg') %]" width="200px" alt="infomaniak" /></a></li>-->
+											<!--<li><a target="_blank" href="http://www.perl-services.de/"><img src="[% make_uri_info('images', 'perl-services.svg') %]" width="175px" style="background-color: #267389; border-radius: 4px; padding: 6px;" alt="perl services" /></a></li>-->
+											<!--<li><a target="_blank" href="https://edument.se/en/"><img src="[% make_uri_info('images', 'Edument-logo-standard.png') %]" width="175px" alt="Edument" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.gibb.ch/"><img src="[% make_uri_info('images', 'gibb_logo.png') %]" alt="gibb" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.open-systems.com/"><img src="[% make_uri_info('images', 'open-systems.svg') %]" alt="Open Systems AG" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.leanux.ch/"><img src="[% make_uri_info('images', 'logo_leanux.png') %]" width="175px" alt="leanux.ch" /></a></li>-->
+											<!--<li><a target="_blank" href="https://www.baumer-its.ch/"><img src="[% make_uri_info('images', 'baumer_it-services.svg') %]" width="175px" alt="baumer it-services" /></a></li>-->
+											<!--<li><a target="_blank" href="https://cubulon.ch/"><img src="[% make_uri_info('images', 'cubulon.png') %]" alt="cubulon" /></a></li>-->
+											<!--<li><a target="_blank" href="http://www.perl6.org/"><img src="[% make_uri_info('images', 'camelia-logo.png') %]" alt="The Perl 6 Community" /></a></li>-->
+											<!--<li><a target="_blank" href="https://perl.careers/"><img src="[% make_uri_info('images', 'perlcareers_200.png') %]" alt="Perl Careers" /></a></li>-->
+											<!--<li><a target="_blank" href="http://www.booking.com/"><img src="[% make_uri_info('images', 'booking.png') %]" alt="booking.com" /></a></li> -->
+											<!--<li><a target="_blank" href="https://www.bolay.co/fr/home/"><img src="[% make_uri_info('images', 'bolayCo_OK.png') %]" alt="bolay.co" /></a></li>-->
+											<!--<li><img src="[% make_uri_info('images', 'indigocode_logo.jpg') %]" alt="Indigo Code Limited" /></li>-->
+											<!-- <li><a target="_blank" href="https://www.bloonix.de/"><img src="[% make_uri_info('images', 'bloonix.png') %]" alt="BLOONIX" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.gfu.net/"><img src="[% make_uri_info('images', 'gfu.png') %]" alt="GFU" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.plusw.de/"><img src="[% make_uri_info('images', 'plusw.jpg') %]" alt="plusW" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.wsiwlt.com/"><img src="[% make_uri_info('images', 'wsiwlt-logo.png') %]" alt="WSIWLT" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.leanux.ch/"><img src="[% make_uri_info('images', 'leanux.ch.gif') %]" alt="Leanux AG" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://envision.event-hosting.com/"><img src="[% make_uri_info('images', 'eventrix.jpg') %]" alt="Eventrix HighD WLAN" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.oreilly.de/"><img src="[% make_uri_info('images', 'oreilly.gif') %]" alt="O'Reilly" /></a></li> -->
+											<!-- <li><a target="_blank" href="http://www.getdigital.de/"><img src="[% make_uri_info('images', 'getdigital.png') %]" alt="getDigital" /></a></li> -->
+										</ul>
+										<header>
+											<h3>Community Sponsors</h3>
+										</header>
+										<ul class="link-list">
+											<!--<li><a target="_blank" href="https://www.devopsdays.org/events/2019-zurich/"><img src="[% make_uri_info('images', 'logo-devopsdays-2019.png') %]" width="175px" alt="devopsdays Z&uuml;rich" /></a></li>-->
+										</ul>
+
+										<p>
+										We are looking for <a href="[% make_uri('sponsoring.html') %]">Sponsors</a>.
+										</p>
+									</section>
+
+									<section>
+										<header>
+											<h2>Blog</h2>
+										</header>
+										<p>
+											<script language="JavaScript" src="https://feed2js.org//feed2js.php?src=http%3A%2F%2Fblogs.perl.org%2Fmt%2Fmt-cp.fcgi%3F__mode%3Dfeed%26_type%3Dactions%26blog_id%3D0%26id%3D2084&num=3&desc=65&targ=y&utf=y"  charset="UTF-8" type="text/javascript"></script>
+
+<noscript>
+<a href="http://feed2js.org//feed2js.php?src=http%3A%2F%2Fblogs.perl.org%2Fmt%2Fmt-cp.fcgi%3F__mode%3Dfeed%26_type%3Dactions%26blog_id%3D0%26id%3D2084&num=3&desc=65&targ=y&utf=y&html=y">View RSS feed</a>
+</noscript>
+
+										</p>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<div id="footer-wrapper">
+				<footer id="footer" class="5grid-layout">
+					<div class="row">
+						<div class="4u">
+							<!-- Links -->
+								<section>
+									[% PROCESS menus/act_confs %]
+								</section>
+						</div>
+						<div class="8u">
+							<!-- Blurb -->
+								<section>
+									<h2>About Perl</h2>
+									<p>Perl 5 is a highly capable, feature-rich programming language with over 30 years of development. Perl 5 runs on over 100 platforms from portables to mainframes and is suitable for both rapid prototyping and large scale development projects.
+									</p>
+									<p>Raku is a new language, part of the Perl family, not intended as a replacement for Perl 5, but as its own thing - libraries exist to allow you to call Perl 5 code from Raku programs and vice versa.
+									</p>
+									More about <a href="http://www.perl.org/">Perl</a> and <a href="https://www.raku.org">Raku</a>...
+								</section>
+						</div>
+					</div>
+				</footer>
+			</div>
+
+		<!-- Copyright -->
+			<div id="copyright">
+				&copy; Perl Verein Schweiz. All rights reserved. | Powered by <a href="http://act.mongueurs.net/">Act</a> | Running on <a href="http://www.freebsd.org/">FreeBSD</a> | Design: <a href="http://html5up.net">HTML5 Up!</a> | Images: <a href="http://fotogrph.com">Fotogrph</a> , Flickr <a href="https://secure.flickr.com/photos/bellatrix6">1</a>:<a href="https://secure.flickr.com/photos/gadgetdan">2</a>:<a href="https://secure.flickr.com/photos/92682792@N00/">3</a>
+			</div>
+
+</body>
+</html>

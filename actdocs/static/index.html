@@ -1,0 +1,77 @@
+[% WRAPPER ui title = global.conference.name %]
+
+<p>
+Welcome to the seventh Swiss Raku and Perl Miniconf.
+</p>
+
+<p>
+<strong>Date</strong>: TBC (September/October 2022)<br />
+<strong>Venue</strong>: TBC (Zürich)<br />
+<strong>Language</strong>: English, German, French, Italian, ...<br />
+<strong>Cost</strong>: Free for private attendees, students, and speakers.
+</p>
+
+<!--
+<p>
+Help us to advertise the conference in your company: <a href="[% make_uri_info('images', 'flyer-spw-2017.pdf') %]">Download the flyer as PDF</a>
+</p>
+-->
+
+<!--
+<p>
+The <a href="[% make_uri('schedule') %]">schedule</a> is online.
+</p>
+-->
+
+<p>
+Please <a href="[% make_uri('register') %]">register</a> and <a href="[% make_uri('purchase') %]">confirm your participation</a> soon, to reserve your place. The conference is FREE for private attendees, students and speakers. Corporate attendees, please check the <a href="[% make_uri('registration.html') %]">Registration</a> page.
+</p>
+
+<p>
+We are looking for speakers, if you have an idea for a talk or presentation then please <a href="[% make_uri('newtalk') %]">submit a talk proposal</a>.
+</p>
+
+<p>
+We are looking for Sponsors. Interested? Have a look at the packages on the <a href="[% make_uri('sponsoring.html') %]">Sponsoring</a> page.
+</p>
+
+
+<p>The conference will be a great opportunity to:</p>
+<ul class="check-list">
+<li>meet Raku and Perl hackers from Switzerland and other countries</li>
+<li>learn from and be inspired by talks</li>
+<li>chat and socialise during breaks and attendees dinner</li>
+</ul>
+
+<p>
+Watch this space for updates, or check the <a href="[% global.request.base_url %][% make_uri_info( 'atom', global.request.language ) %].xml">feed</a>.
+</p>
+
+[% news = global.news(6);
+   IF news.size > 3;
+     more = news.pop;
+   END;
+ %]
+
+[% IF news.size %]
+<h2>Latest News</h2>
+[% FOREACH item = news %]
+<div class="news-entry">
+ <h3 class="news-header">
+  <span class="news-date">[% date_format(item.datetime, 'date_short') %]</span>
+  <span class="news-title">[% item.title %]</span>
+ </h3>
+ <div class="news-text">
+  [% item.content %]
+ </div>
+</div>
+[% END %]
+[% END %]
+
+[% IF more %]
+<p>
+ <a href="[% make_uri('news') %]" class="news-link">Older announcements</a>
+</p>
+[% END %]
+
+[% END %]
